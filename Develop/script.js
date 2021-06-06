@@ -10,111 +10,116 @@ function writePassword() {
 
 //This function is called from writePassword()
 function generatePassword(){
-  var pwd1 = "";
+  var password = "";
+  var char = "";
+  var Dlower;
+  var lower = "abcefghijklmnopqrstqvwxyz";
+  var Dupper;
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var Dnumber;
+  var number = "0123456789";
+  var Dspecial;
+  var special = '~!@#$%^&*()_+{}":?><;.,';
+  var length;
 
-  enterLen();
+  //Calls the function which has logic to ask user to enter the length of the password
+  userEnterLength();
 
-  function enterLen(){
-    var length = prompt("What's the preffered length of the password?");
+  //Logic to ask user to enter the length of the password
+  function userEnterLength(){
+    length = prompt("What's the preffered length of the password?");
     if(length){
-    checkLen(length);
+    checkLength(); //Calls the function which verify the length entered by the user
     } else {
       return;
     }
   }
 
-  function checkLen(length){
+  //Logic to verify the length is between 8 and 128
+  function checkLength(){
     if (length<8 || length>128){
-    enterLen();
-    } else {
-      fun1(length);
+      userEnterLength(); //If length criteria is not met, request user to enter the length again
+    } 
+    else {
+      charOption(); //Calls the function which ask user what different characters they want in the password
     }
   }
 
-  function fun1(length){
-    
-    var char = "";
-
-    var Dlower = confirm("Do you want LowerCase?");
+  //Logic to ask user what different characters they want in the password
+  function charOption(){
+    Dlower = confirm("Do you want LowerCase?");
     if(Dlower) {
-      var lower = "abcefghijklmnopqrstqvwxyz";
       char = lower;
     }
   
-    var Dupper = confirm("Do you want UpperCase?");
+    Dupper = confirm("Do you want UpperCase?");
     if(Dupper){
-      var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       char = char + upper;
     }
 
-    var Dnumber = confirm("Do you want Number?");
+    Dnumber = confirm("Do you want Number?");
     if(Dnumber){
-      var number = "0123456789";
       char = char + number;
     }
 
-    var Dspecial = confirm("Do you want Special Character?");
+    Dspecial = confirm("Do you want Special Character?");
     if(Dspecial){
-      var special = '~!@#$%^&*()_+{}":?><;.,';
       char = char + special;
     }
-
-    pwd();
-
-    function pwd(){
-      pwd1 = "";
-      for (var i=0;i<length;i++){
-        pwd1 = pwd1 + char.charAt(Math.floor(Math.random()*char.length));
-      }
-      console.log(pwd1);
-      verification(pwd1);
-      return pwd1;
-    }
-
-    // verification(pwd1);
-    
-    function verification(pwd1){
-      // This verifies if string contains an uppercase or not
-      if(Dlower == true){
-        lowV = /[a-z]/.test(pwd1);
-        console.log("VLower: " +lowV);
-        if(!lowV){
-          pwd();
-        }
-      }
-
-      // This verifies if string contains a lowercase or not
-      if(Dupper == true){
-        uppV = /[A-Z]/.test(pwd1);
-        console.log("VUpper: " +uppV);
-        if(!uppV){
-          pwd();
-        }
-      }
-
-      // This verifies if string contains a number or not
-      if(Dnumber == true){
-        numV = /\d/.test(pwd1);
-        console.log("VNum: " +numV);
-        if(!numV){
-          pwd();
-        }
-      }
-
-      // This verifies if string contains a special char or not
-      if(Dspecial == true){
-        speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(pwd1);
-        console.log("VSpecial: " +speV);
-        if(!speV){
-          pwd();
-        }
-      }
-    }
-
-    return pwd1;
   }
-  return pwd1;
-}
+
+  passwordLogic();
+
+  function passwordLogic(){
+    password = "";
+    for (var i=0;i<length;i++){
+      password = password + char.charAt(Math.floor(Math.random()*char.length));
+    }
+    console.log(password);
+    verifyPassword();
+  }
+    
+  function verifyPassword(){
+    // This verifies if string contains an uppercase or not
+    if(Dlower == true){
+      lowV = /[a-z]/.test(password);
+      console.log("VLower: " +lowV);
+      if(!lowV){
+        passwordLogic();
+      }
+    }
+
+    // This verifies if string contains a lowercase or not
+    if(Dupper == true){
+      uppV = /[A-Z]/.test(password);
+      console.log("VUpper: " +uppV);
+      if(!uppV){
+        passwordLogic();
+      }
+    }
+
+    // This verifies if string contains a number or not
+    if(Dnumber == true){
+      numV = /\d/.test(password);
+      console.log("VNum: " +numV);
+      if(!numV){
+        passwordLogic();
+      }
+    }
+
+    // This verifies if string contains a special char or not
+    if(Dspecial == true){
+      speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(password);
+      console.log("VSpecial: " +speV);
+      if(!speV){
+        passwordLogic();
+      }
+    }
+  }
+
+  return password;
+  }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
