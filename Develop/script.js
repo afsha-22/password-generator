@@ -63,53 +63,53 @@ function generatePassword(){
 
     function pwd(){
       pwd1 = "";
-    for (var i=0;i<length;i++){
-      pwd1 = pwd1 + char.charAt(Math.floor(Math.random()*char.length));
+      for (var i=0;i<length;i++){
+        pwd1 = pwd1 + char.charAt(Math.floor(Math.random()*char.length));
+      }
+      console.log(pwd1);
+      verification(pwd1);
+      return pwd1;
     }
-    console.log(pwd1);
-    return pwd1;
-    }
+
+    // verification(pwd1);
     
-// This verifies if string contains an uppercase or not
-//console.log("Lower: " + /[a-z]/.test(pwd1));
-if(Dlower == true){
-  lowV = /[a-z]/.test(pwd1);
-  console.log("VLower: " +lowV);
-  if(!lowV){
-    pwd();
-  }
-}
+    function verification(pwd1){
+      // This verifies if string contains an uppercase or not
+      if(Dlower == true){
+        lowV = /[a-z]/.test(pwd1);
+        console.log("VLower: " +lowV);
+        if(!lowV){
+          pwd();
+        }
+      }
 
-// This verifies if string contains a lowercase or not
-//console.log("Upper: " + /[A-Z]/.test(pwd1));
-if(Dupper == true){
-  uppV = /[A-Z]/.test(pwd1);
-  console.log("VUpper: " +uppV);
-  if(!uppV){
-    pwd();
-  }
-}
+      // This verifies if string contains a lowercase or not
+      if(Dupper == true){
+        uppV = /[A-Z]/.test(pwd1);
+        console.log("VUpper: " +uppV);
+        if(!uppV){
+          pwd();
+        }
+      }
 
+      // This verifies if string contains a number or not
+      if(Dnumber == true){
+        numV = /\d/.test(pwd1);
+        console.log("VNum: " +numV);
+        if(!numV){
+          pwd();
+        }
+      }
 
-// This verifies if string contains a number or not
-//console.log("Num: " + /\d/.test(pwd1));
-if(Dnumber == true){
-  numV = /\d/.test(pwd1);
-  console.log("VNum: " +numV);
-  if(!numV){
-    pwd();
-  }
-}
-
-// This verifies if string contains a special char or not
-//console.log("Special: " + /[~!@#$%^&*()_+{}":?><;.,]/.test(pwd1));
-if(Dspecial == true){
-  speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(pwd1);
-  console.log("VSpecial: " +speV);
-  if(!speV){
-    pwd();
-  }
-}
+      // This verifies if string contains a special char or not
+      if(Dspecial == true){
+        speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(pwd1);
+        console.log("VSpecial: " +speV);
+        if(!speV){
+          pwd();
+        }
+      }
+    }
 
     return pwd1;
   }
