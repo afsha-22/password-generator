@@ -25,6 +25,9 @@ function generatePassword(){
   //Calls the function which has logic to ask user to enter the length of the password
   userEnterLength();
 
+  //Calls the function which has logic to generate the password
+  passwordLogic();
+
   //Logic to ask user to enter the length of the password
   function userEnterLength(){
     length = prompt("What's the preffered length of the password?");
@@ -41,12 +44,12 @@ function generatePassword(){
       userEnterLength(); //If length criteria is not met, request user to enter the length again
     } 
     else {
-      charOption(); //Calls the function which ask user what different characters they want in the password
+      criteria(); //Calls the function which ask user what different characters they want in the password
     }
   }
 
   //Logic to ask user what different characters they want in the password
-  function charOption(){
+  function criteria(){
     Dlower = confirm("Do you want LowerCase?");
     if(Dlower) {
       char = lower;
@@ -68,17 +71,17 @@ function generatePassword(){
     }
   }
 
-  passwordLogic();
-
+  //Logic to generate the password
   function passwordLogic(){
     password = "";
     for (var i=0;i<length;i++){
       password = password + char.charAt(Math.floor(Math.random()*char.length));
     }
     console.log(password);
-    verifyPassword();
+    verifyPassword(); //Calls the function which has the logic to verify all the criterias are met
   }
-    
+  
+  //Logic to verify all the criterias are met
   function verifyPassword(){
     // This verifies if string contains an uppercase or not
     if(Dlower == true){
