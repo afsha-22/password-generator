@@ -16,7 +16,11 @@ function generatePassword(){
 
   function enterLen(){
     var length = prompt("What's the preffered length of the password?");
+    if(length){
     checkLen(length);
+    } else {
+      return;
+    }
   }
 
   function checkLen(length){
