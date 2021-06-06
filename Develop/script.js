@@ -22,11 +22,8 @@ function generatePassword(){
   var special = '~!@#$%^&*()_+{}":?><;.,';
   var length;
 
-  //Calls the function which has logic to ask user to enter the length of the password
+  //Calls the function which asks user to enter the length of the password
   userEnterLength();
-
-  //Calls the function which has logic to generate the password
-  passwordLogic();
 
   //Logic to ask user to enter the length of the password
   function userEnterLength(){
@@ -71,6 +68,9 @@ function generatePassword(){
     }
   }
 
+  //Calls the function that generates the password
+  passwordLogic();
+
   //Logic to generate the password
   function passwordLogic(){
     password = "";
@@ -78,12 +78,12 @@ function generatePassword(){
       password = password + char.charAt(Math.floor(Math.random()*char.length));
     }
     console.log(password);
-    verifyPassword(); //Calls the function which has the logic to verify all the criterias are met
+    verifyPassword(); //Calls the function which verify all the criterias are met
   }
   
   //Logic to verify all the criterias are met
   function verifyPassword(){
-    // This verifies if string contains an uppercase or not
+    // This verifies if string contains an uppercase, if it's one of the criteria
     if(Dlower == true){
       lowV = /[a-z]/.test(password);
       console.log("VLower: " +lowV);
@@ -92,7 +92,7 @@ function generatePassword(){
       }
     }
 
-    // This verifies if string contains a lowercase or not
+    // This verifies if string contains a lowercase, if it's one of the criteria
     if(Dupper == true){
       uppV = /[A-Z]/.test(password);
       console.log("VUpper: " +uppV);
@@ -101,7 +101,7 @@ function generatePassword(){
       }
     }
 
-    // This verifies if string contains a number or not
+    // This verifies if string contains a number, if it's one of the criteria
     if(Dnumber == true){
       numV = /\d/.test(password);
       console.log("VNum: " +numV);
@@ -110,7 +110,7 @@ function generatePassword(){
       }
     }
 
-    // This verifies if string contains a special char or not
+    // This verifies if string contains a special char, if it's one of the criteria
     if(Dspecial == true){
       speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(password);
       console.log("VSpecial: " +speV);
