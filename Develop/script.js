@@ -66,6 +66,10 @@ function generatePassword(){
     if(Dspecial){
       char = char + special;
     }
+
+    if(!Dlower && !Dupper && !Dnumber && !Dspecial){
+      alert("Sorry, can't generate any password with no input characters");
+    }
   }
 
   //Calls the function that generates the password
@@ -89,6 +93,7 @@ function generatePassword(){
       console.log("VLower: " +lowV);
       if(!lowV){
         passwordLogic();
+        return;
       }
     }
 
@@ -98,6 +103,7 @@ function generatePassword(){
       console.log("VUpper: " +uppV);
       if(!uppV){
         passwordLogic();
+        return;
       }
     }
 
@@ -107,6 +113,7 @@ function generatePassword(){
       console.log("VNum: " +numV);
       if(!numV){
         passwordLogic();
+        return;
       }
     }
 
@@ -116,6 +123,7 @@ function generatePassword(){
       console.log("VSpecial: " +speV);
       if(!speV){
         passwordLogic();
+        return;
       }
     }
   }
