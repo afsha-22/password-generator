@@ -38,6 +38,7 @@ function generatePassword(){
   //Logic to verify the length is between 8 and 128
   function checkLength(){
     if (length<8 || length>128){
+      alert("Password must be between 8 and 128 characters.");
       userEnterLength(); //If length criteria is not met, request user to enter the length again
     } 
     else {
