@@ -25,10 +25,15 @@ function generatePassword(){
   //Calls the function which asks user to enter the length of the password
   userEnterLength();
 
+  //Calls the function that generates the password
+  passwordLogic(); 
+
   // Logic to ask user to enter the length of the password
   function userEnterLength(){
     length = prompt("What's the prefered length of the password?");
-    if(length){
+    if(length==""){
+      alert("No input provided for password generation!");
+    }else if(length){
     checkLength(); //Calls the function which verify the length entered by the user
     } else {
       return;
@@ -72,9 +77,6 @@ function generatePassword(){
       alert("Sorry, can't generate any password with no input characters");
     }
   }
-
-  //Calls the function that generates the password
-  passwordLogic();
 
   //Logic to generate the password
   function passwordLogic(){
