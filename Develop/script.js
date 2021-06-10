@@ -91,7 +91,7 @@ function generatePassword(){
     // This verifies if string contains an uppercase, if it's one of the criteria
     if(inputLower){
       var verifyLower = /[a-z]/.test(password);
-      console.log("VLower: " +verifyLower);
+      console.log("Lowercase char present: " +verifyLower);
       if(!verifyLower){
         passwordLogic();
         return;
@@ -101,7 +101,7 @@ function generatePassword(){
     // This verifies if string contains a lowercase, if it's one of the criteria
     if(inputUpper){
       verifyUpper = /[A-Z]/.test(password);
-      console.log("VUpper: " +verifyUpper);
+      console.log("Uppercase char present: " +verifyUpper);
       if(!verifyUpper){
         passwordLogic();
         return;
@@ -111,7 +111,7 @@ function generatePassword(){
     // This verifies if string contains a number, if it's one of the criteria
     if(inputNumber){
       verifyNumber = /\d/.test(password);
-      console.log("VNum: " +verifyNumber);
+      console.log("Number present: " +verifyNumber);
       if(!verifyNumber){
         passwordLogic();
         return;
@@ -121,7 +121,7 @@ function generatePassword(){
     // This verifies if string contains a special char, if it's one of the criteria
     if(inputSpecial){
       verifySpecial = /[~!@#$%^&*()_+{}":?><;.,]/.test(password);
-      console.log("VSpecial: " +verifySpecial);
+      console.log("Special char present: " +verifySpecial);
       if(!verifySpecial){
         passwordLogic();
         return;
