@@ -12,22 +12,22 @@ function writePassword() {
 function generatePassword(){
   var password = "";
   var char = "";
-  var Dlower;
+  var inputLower;
   var lower = "abcefghijklmnopqrstqvwxyz";
-  var Dupper;
+  var inputUpper;
   var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var Dnumber;
+  var inputNumber;
   var number = "0123456789";
-  var Dspecial;
+  var inputSpecial;
   var special = '~!@#$%^&*()_+{}":?><;.,';
   var length;
 
   //Calls the function which asks user to enter the length of the password
   userEnterLength();
 
-  //Logic to ask user to enter the length of the password
+  // Logic to ask user to enter the length of the password
   function userEnterLength(){
-    length = prompt("What's the preffered length of the password?");
+    length = prompt("What's the prefered length of the password?");
     if(length){
     checkLength(); //Calls the function which verify the length entered by the user
     } else {
@@ -35,7 +35,7 @@ function generatePassword(){
     }
   }
 
-  //Logic to verify the length is between 8 and 128
+  // Logic to verify the length is between 8 and 128
   function checkLength(){
     if (length<8 || length>128){
       alert("Password must be between 8 and 128 characters.");
@@ -46,29 +46,29 @@ function generatePassword(){
     }
   }
 
-  //Logic to ask user what different characters they want in the password
+  // Logic to ask user what different characters they want in the password
   function criteria(){
-    Dlower = confirm("Do you want LowerCase?");
-    if(Dlower) {
+    inputLower = confirm("Do you want  a LowerCase in the password?");
+    if(inputLower) {
       char = lower;
     }
   
-    Dupper = confirm("Do you want UpperCase?");
-    if(Dupper){
+    inputUpper = confirm("Do you want a UpperCase in the password?");
+    if(inputUpper){
       char = char + upper;
     }
 
-    Dnumber = confirm("Do you want Number?");
-    if(Dnumber){
+    inputNumber = confirm("Do you want a Number in the password?");
+    if(inputNumber){
       char = char + number;
     }
 
-    Dspecial = confirm("Do you want Special Character?");
-    if(Dspecial){
+    inputSpecial = confirm("Do you want a Special Character in the password?");
+    if(inputSpecial){
       char = char + special;
     }
 
-    if(!Dlower && !Dupper && !Dnumber && !Dspecial){
+    if(!inputLower && !inputUpper && !inputNumber && !inputSpecial){
       alert("Sorry, can't generate any password with no input characters");
     }
   }
@@ -89,40 +89,40 @@ function generatePassword(){
   //Logic to verify all the criterias are met
   function verifyPassword(){
     // This verifies if string contains an uppercase, if it's one of the criteria
-    if(Dlower == true){
-      lowV = /[a-z]/.test(password);
-      console.log("VLower: " +lowV);
-      if(!lowV){
+    if(inputLower){
+      var verifyLower = /[a-z]/.test(password);
+      console.log("VLower: " +verifyLower);
+      if(!verifyLower){
         passwordLogic();
         return;
       }
     }
 
     // This verifies if string contains a lowercase, if it's one of the criteria
-    if(Dupper == true){
-      uppV = /[A-Z]/.test(password);
-      console.log("VUpper: " +uppV);
-      if(!uppV){
+    if(inputUpper){
+      verifyUpper = /[A-Z]/.test(password);
+      console.log("VUpper: " +verifyUpper);
+      if(!verifyUpper){
         passwordLogic();
         return;
       }
     }
 
     // This verifies if string contains a number, if it's one of the criteria
-    if(Dnumber == true){
-      numV = /\d/.test(password);
-      console.log("VNum: " +numV);
-      if(!numV){
+    if(inputNumber){
+      verifyNumber = /\d/.test(password);
+      console.log("VNum: " +verifyNumber);
+      if(!verifyNumber){
         passwordLogic();
         return;
       }
     }
 
     // This verifies if string contains a special char, if it's one of the criteria
-    if(Dspecial == true){
-      speV = /[~!@#$%^&*()_+{}":?><;.,]/.test(password);
-      console.log("VSpecial: " +speV);
-      if(!speV){
+    if(inputSpecial){
+      verifySpecial = /[~!@#$%^&*()_+{}":?><;.,]/.test(password);
+      console.log("VSpecial: " +verifySpecial);
+      if(!verifySpecial){
         passwordLogic();
         return;
       }
